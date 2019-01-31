@@ -23,6 +23,17 @@ else:
     pass
 
 print(mongo)
-print("Logged in DB USER")
+print("Logged in")
+
+# Get DB object and collection of buildings
+
+db = mongo.apscm3
+
+collection = db.buildings
+
+print(db)
+print(collection)
+
+print("Data Retreived")
 
 exit()
