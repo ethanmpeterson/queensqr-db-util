@@ -16,6 +16,7 @@ print("Please Login")
 usr = input("username: ")
 try:
     pwd = getpass.getpass("password: ")
+    print("\n")
     mongo = LoginClient.auth(usr, pwd)
 except Exception as err:
     print("Login Error", err)
@@ -23,6 +24,7 @@ else:
     pass
 
 print(mongo)
+print("\n")
 print("Logged in")
 
 # Get DB object and collection of buildings
@@ -34,6 +36,30 @@ collection = db.buildings
 print(db)
 print(collection)
 
-print("Data Retreived")
+print("\nData Retreived")
+
+# Prompt User
+
+print("Please Select an Action (Enter the number corresponding to the action)\n")
+print("(1) List all buildings\n")
+print("(2) Enter data for a new building\n")
+print("(3) Generate a QR Code image for a certain building\n")
+
+ans = input("answer: ")
+
+# collect all building objects in array
+buildings = collection.find({})
+
+if ans == "1":
+    for i, b in enumerate(buildings):
+        print("\n-------------------------\n")
+        print("index = " + str(i) + "\n")
+        print(b)
+        print("\n-------------------------\n")
+elif ans == "2":
+    pass
+elif ans == "3":
+    pass
+
 
 exit()
