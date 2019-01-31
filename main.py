@@ -7,6 +7,7 @@
 import getpass
 import login as LoginClient
 import entry as EntryClient
+import gen as QRClient
 
 
 print("Welcome to the QueensQR Data Entry Utility")
@@ -65,6 +66,10 @@ elif ans == "2":
     else:
         pass
     # Prompt if user would like to generate QR code using that object id
+    img = QRClient.generate(objectId)
+    img.save(str(objectId) + ".png")
+    print("Imaged saved as: " + str(objectId) + ".png")
+    exit()
 elif ans == "3":
     pass
 
