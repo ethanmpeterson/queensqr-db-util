@@ -4,10 +4,10 @@
 # Print Welcome
 
 # Imports
-import qrcode
 import getpass
 import login as LoginClient
-#from pymongo import MongoClient
+import entry as EntryClient
+
 
 print("Welcome to the QueensQR Data Entry Utility")
 print("Please Login")
@@ -57,7 +57,14 @@ if ans == "1":
         print(b)
         print("\n-------------------------\n")
 elif ans == "2":
-    pass
+    try:
+        objectId = collection.insert_one(EntryClient.newBuilding()).inserted_id
+        print("Object Placed in DB under ID: " + str(objectId))
+    except Exception as err:
+        print("Failed to insert object into DB", err)
+    else:
+        pass
+    # Prompt if user would like to generate QR code using that object id
 elif ans == "3":
     pass
 
