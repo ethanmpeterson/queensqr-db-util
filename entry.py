@@ -20,6 +20,23 @@ def arrayField(prompt, dbField):
     b[str(dbField)] = arr
     print("")
 
+def hourEntry(dbField):
+    print("\nHOUR ENTRY SYSTEM")
+    print("System goes over each day of the week\nType enter if the service/building is closed. Otherwise type the time formatted in 12H with a dash")
+    print("Ex: '9:00 AM - 5:00 PM'\n")
+    hourDict = {}
+
+    hourDict['mon'] = input("Monday: ")
+    hourDict['tue'] = input("Tuesday: ")
+    hourDict['wed'] = input("Wednesday: ")
+    hourDict['thu'] = input("Thursday: ")
+    hourDict['fri'] = input("Friday: ")
+    hourDict['sat'] = input("Saturday: ")
+    hourDict['sun'] = input("Sunday: ")
+    print(hourDict)
+    b['hours'] = hourDict
+
+
 def newBuilding():
     print("Welcome to Building Entry Wizard")
     print("Press enter to move onto the next property (all fields mandatory)\n")
@@ -27,7 +44,7 @@ def newBuilding():
     fieldPrompt("name: ", "name")
     fieldPrompt("address: ", "address")
     fieldPrompt("faculty: ", "faculty")
-    fieldPrompt("hours: ", "hours")
+    hourEntry("hours")
     fieldPrompt("history: ", "history")
     arrayField("alias: ", "alias")
     fieldPrompt("services (give comma seperated list of strings no spaces between commas): ", "services")
