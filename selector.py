@@ -1,5 +1,4 @@
 def selectFrom(arr):
-    indices = []
     for i, o in enumerate(arr):
         print("\n-------------------------\n")
         print("index = " + str(i) + "\n")
@@ -7,4 +6,4 @@ def selectFrom(arr):
         print("\n-------------------------\n")
     print("Type the index number of the item you would like to select")
     ans = input("answer: ")
-    return arr[int(ans)]
+    return arr[int(ans)] 

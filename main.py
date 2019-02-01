@@ -72,8 +72,15 @@ elif ans == "2":
 elif ans == "3":
     selection = SelectionTool.selectFrom(buildings)
     print("You Have Selected " + selection['name'] + "\nGenerate a QR Code?")
-    
     ans = input("answer [y/n] ")
+    if (ans == 'y'):
+        QRClient.generate(selection['_id'])
+    elif (ans == 'n'):
+        exit()
+    else:
+        print("Enter a valid input")
+        exit()
+
 
 
 exit()
