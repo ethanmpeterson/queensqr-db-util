@@ -2,4 +2,6 @@ import qrcode
 
 def generate(objId):
     url = "https://queensqr.herokuapp.com/" + str(objId)
-    return qrcode.make(url)
+    img = qrcode.make(url)
+    img.save(str(objId) + ".png")
+    print("Imaged saved as: " + str(objId) + ".png")

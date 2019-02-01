@@ -8,6 +8,7 @@ import getpass
 import login as LoginClient
 import entry as EntryClient
 import gen as QRClient
+import selector as SelectionTool
 
 
 print("Welcome to the QueensQR Data Entry Utility")
@@ -49,7 +50,7 @@ print("(3) Generate a QR Code image for a certain building\n")
 ans = input("answer: ")
 
 # collect all building objects in array
-buildings = collection.find({})
+buildings = list(collection.find({}))
 
 if ans == "1":
     for i, b in enumerate(buildings):
@@ -66,12 +67,13 @@ elif ans == "2":
     else:
         pass
     # Prompt if user would like to generate QR code using that object id
-    img = QRClient.generate(objectId)
-    img.save(str(objectId) + ".png")
-    print("Imaged saved as: " + str(objectId) + ".png")
+    QRClient.generate(objectId)
     exit()
 elif ans == "3":
-    pass
+    selection = SelectionTool.selectFrom(buildings)
+    print("You Have Selected " + selection['name'] + "\nGenerate a QR Code?")
+    
+    ans = input("answer [y/n] ")
 
 
 exit()
