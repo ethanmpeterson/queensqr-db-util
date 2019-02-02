@@ -37,6 +37,12 @@ def hourEntry(dbField):
     b['hours'] = hourDict
 
 
+def newService():
+    print("SERVICE ENTRY")
+    print("all fields mandatory press enter to move onto the next one")
+    
+    pass
+
 def newBuilding():
     print("Welcome to Building Entry Wizard")
     print("Press enter to move onto the next property (all fields mandatory)\n")
