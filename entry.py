@@ -3,6 +3,7 @@
 
 b = {}
 b['services'] = []
+b['entrances'] = []
 def  fieldPrompt(prompt, dbField):
     ans = input(prompt)
     ans = ans.strip()
@@ -36,6 +37,22 @@ def hourEntry(dbField, dict):
     print(hourDict)
     dict['hours'] = hourDict
 
+def posEntry():
+    posDict = {}
+    posDict['x'] = float(input("x: "))
+    posDict['y'] = float(input("y: "))
+    return posDict
+
+def newEntrance(targetDict):
+    print("ENTRANCE ENTRY")
+    print("All fields mandatory press enter to move onto the next one")
+    entranceDict = {}
+    
+    entranceDict['name'] = input("name: ")
+    print("Floating Point Numbers Required")
+    entranceDict['pos'] = posEntry()
+    targetDict['entrances'].append(entranceDict)
+    
 
 def newService():
     print("SERVICE ENTRY")
@@ -64,7 +81,11 @@ def newBuilding():
         ans = input("enter another service? [y/n] ")
         if ans != 'y':
             break
-    
+    while True:
+        newEntrance(b)
+        ans = input("enter another entrance? [y/n]")
+        if ans != 'y':
+            break
     print("Final Document:\n")
     print(b)
     return b
