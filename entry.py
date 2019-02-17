@@ -58,12 +58,22 @@ def newService():
     print("SERVICE ENTRY")
     print("all fields mandatory press enter to move onto the next one")
     serviceDict = {}
+    serviceDict['entrances'] = []
+
     serviceDict['name'] = input("name: ")
     serviceDict['room_number'] = input("room number: ")
     serviceDict['faculty'] = input("faculty: ")
     hourEntry("hours", serviceDict)
     serviceDict['description'] = input("description: ")
+    
+    while True:
+        newEntrance(serviceDict)
+        ans = input("enter another entrance? [y/n]")
+        if ans != 'y':
+            break
+
     b['services'].append(serviceDict)
+    print("Service Recorded")
     pass
 
 def newBuilding():
@@ -81,6 +91,8 @@ def newBuilding():
         ans = input("enter another service? [y/n] ")
         if ans != 'y':
             break
+    print("")
+    print("Building Entrances")
     while True:
         newEntrance(b)
         ans = input("enter another entrance? [y/n]")
