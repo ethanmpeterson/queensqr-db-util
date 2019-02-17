@@ -2,7 +2,7 @@
 # return a dictionary that can be posted to the DB in the main.py file
 
 b = {}
-
+b['services'] = []
 def  fieldPrompt(prompt, dbField):
     ans = input(prompt)
     ans = ans.strip()
@@ -20,7 +20,7 @@ def arrayField(prompt, dbField):
     b[str(dbField)] = arr
     print("")
 
-def hourEntry(dbField):
+def hourEntry(dbField, dict):
     print("\nHOUR ENTRY SYSTEM")
     print("System goes over each day of the week\nType enter if the service/building is closed. Otherwise type the time formatted in 12H with a dash")
     print("Ex: '9:00 AM - 5:00 PM'\n")
@@ -34,13 +34,19 @@ def hourEntry(dbField):
     hourDict['sat'] = input("Saturday: ")
     hourDict['sun'] = input("Sunday: ")
     print(hourDict)
-    b['hours'] = hourDict
+    dict['hours'] = hourDict
 
 
 def newService():
     print("SERVICE ENTRY")
     print("all fields mandatory press enter to move onto the next one")
-    
+    serviceDict = {}
+    serviceDict['name'] = input("name: ")
+    serviceDict['room_number'] = input("room number: ")
+    serviceDict['faculty'] = input("faculty: ")
+    hourEntry("hours", serviceDict)
+    serviceDict['description'] = input("description: ")
+    b['services'].append(serviceDict)
     pass
 
 def newBuilding():
@@ -50,11 +56,15 @@ def newBuilding():
     fieldPrompt("name: ", "name")
     fieldPrompt("address: ", "address")
     fieldPrompt("faculty: ", "faculty")
-    hourEntry("hours")
+    hourEntry("hours", b)
     fieldPrompt("history: ", "history")
     arrayField("alias: ", "alias")
-    fieldPrompt("services (give comma seperated list of strings no spaces between commas): ", "services")
-
+    while True:
+        newService()
+        ans = input("enter another service? [y/n] ")
+        if ans != 'y':
+            break
+    
     print("Final Document:\n")
     print(b)
     return b
