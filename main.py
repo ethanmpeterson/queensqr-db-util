@@ -67,14 +67,16 @@ elif ans == "2":
     else:
         pass
     # Prompt if user would like to generate QR code using that object id
-    QRClient.generate(objectId)
+    ans = int(input("entrance index: "))
+    QRClient.generate(objectId, ans)
     exit()
 elif ans == "3":
     selection = SelectionTool.selectFrom(buildings)
     print("You Have Selected " + selection['name'] + "\nGenerate a QR Code?")
     ans = input("answer [y/n] ")
     if (ans == 'y'):
-        QRClient.generate(selection['_id'])
+        ans = int(input("entrance index: "))
+        QRClient.generate(selection['_id'], ans)
     elif (ans == 'n'):
         exit()
     else:
