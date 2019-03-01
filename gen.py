@@ -4,7 +4,7 @@ import json
 def generate(objId, idx):
     data = {
         "id": str(objId),
-        "entranceIdx" : int(idx)
+        "entranceIdx" : str(idx)
     }
     data = json.dumps(data)
     img = qrcode.make(data)

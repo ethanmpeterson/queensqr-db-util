@@ -66,11 +66,7 @@ def newService():
     hourEntry("hours", serviceDict)
     serviceDict['description'] = input("description: ")
     
-    while True:
-        newEntrance(serviceDict)
-        ans = input("enter another entrance? [y/n]")
-        if ans != 'y':
-            break
+    newEntrance(serviceDict)
 
     b['services'].append(serviceDict)
     print("Service Recorded")
