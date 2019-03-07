@@ -37,28 +37,28 @@ def hourEntry(dbField, dict):
     print(hourDict)
     dict['hours'] = hourDict
 
-def posEntry():
-    posDict = {}
-    posDict['x'] = float(input("x: "))
-    posDict['y'] = float(input("y: "))
-    return posDict
-
-def newEntrance(targetDict):
+def newEntrance(targetDict, serviceFlag):
     print("ENTRANCE ENTRY")
     print("All fields mandatory press enter to move onto the next one")
     entranceDict = {}
     
     entranceDict['name'] = input("name: ")
     print("Floating Point Numbers Required")
-    entranceDict['pos'] = posEntry()
-    targetDict['entrances'].append(entranceDict)
+    entranceDict['x'] = float(input("x: "))
+    entranceDict['y'] = float(input("y: "))
+
+    if serviceFlag:
+        targetDict['entrance'] = entranceDict
+    else:
+        targetDict['entrances'].append(entranceDict)
+    print(targetDict)
     
 
 def newService():
     print("SERVICE ENTRY")
     print("all fields mandatory press enter to move onto the next one")
     serviceDict = {}
-    serviceDict['entrances'] = []
+    serviceDict['entrance'] = {}
 
     serviceDict['name'] = input("name: ")
     serviceDict['room_number'] = input("room number: ")
@@ -66,7 +66,7 @@ def newService():
     hourEntry("hours", serviceDict)
     serviceDict['description'] = input("description: ")
     
-    newEntrance(serviceDict)
+    newEntrance(serviceDict, True)
 
     b['services'].append(serviceDict)
     print("Service Recorded")
@@ -90,7 +90,7 @@ def newBuilding():
     print("")
     print("Building Entrances")
     while True:
-        newEntrance(b)
+        newEntrance(b, False)
         ans = input("enter another entrance? [y/n]")
         if ans != 'y':
             break
