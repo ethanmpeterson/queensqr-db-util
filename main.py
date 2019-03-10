@@ -9,7 +9,6 @@ import login as LoginClient
 import entry as EntryClient
 import gen as QRClient
 import selector as SelectionTool
-import file as FileClient
 
 
 print("Welcome to the QueensQR Data Entry Utility")
@@ -47,6 +46,7 @@ print("Please Select an Action (Enter the number corresponding to the action)\n"
 print("(1) List all buildings\n")
 print("(2) Enter data for a new building\n")
 print("(3) Generate a QR Code image for a certain building\n")
+print("(4) Upload Floorplans for a Building\n")
 
 ans = input("answer: ")
 
@@ -83,6 +83,11 @@ elif ans == "3":
     else:
         print("Enter a valid input")
         exit()
+elif ans == "4":
+    selection = SelectionTool.selectFrom(buildings)
+    EntryClient.newFloorPlan(selection['_id'])
+    
+    pass
 
 
 

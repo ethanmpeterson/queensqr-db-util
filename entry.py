@@ -1,6 +1,8 @@
 # Prompt User For all Data needed for a new Building Object in the DB
 # return a dictionary that can be posted to the DB in the main.py file
 
+import file as FileClient
+
 b = {}
 b['services'] = []
 b['entrances'] = []
@@ -57,10 +59,19 @@ def newEntrance(targetDict, serviceFlag):
     print(targetDict)
 
 def newFloor():
-    pass
+    floorPaths.append(FileClient.selector())
 
-def newFloorPlan():
-    pass
+def newFloorPlan(buildingID):
+    print("Welcome To the Floor Plan Creation Wizard\n\n")
+    print("Select a PNG file of the floorplan start with the lowest floor (i.e basement and go up)\n")
+    input("Press Enter to Continue")
+    newFloor()
+    while True:
+        ans = input("Would like to upload another Floor [y/n]")
+        if ans != "y":
+            break
+        newFloor()
+    print(floorPaths)
 
 def newService():
     print("SERVICE ENTRY")
