@@ -4,6 +4,9 @@
 b = {}
 b['services'] = []
 b['entrances'] = []
+
+floorPaths = []
+
 def  fieldPrompt(prompt, dbField):
     ans = input(prompt)
     ans = ans.strip()
@@ -52,7 +55,12 @@ def newEntrance(targetDict, serviceFlag):
     else:
         targetDict['entrances'].append(entranceDict)
     print(targetDict)
-    
+
+def newFloor():
+    pass
+
+def newFloorPlan():
+    pass
 
 def newService():
     print("SERVICE ENTRY")

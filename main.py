@@ -9,6 +9,7 @@ import login as LoginClient
 import entry as EntryClient
 import gen as QRClient
 import selector as SelectionTool
+import file as FileClient
 
 
 print("Welcome to the QueensQR Data Entry Utility")

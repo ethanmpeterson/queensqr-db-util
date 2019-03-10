@@ -1,8 +1,6 @@
 import easygui
 
-#path = easygui.fileopenbox()
+# PNG File Selector Function
 
-def selector(fileType):
-    return easygui.fileopenbox(msg = "Select A PNG File", title = "Specify PNG", filetypes = fileType) # returns string of file path to be used in upload process
-
-selector("*.png")
+def selector():
+    return easygui.fileopenbox(msg = "Select A PNG File", title = "Specify PNG", filetypes = ("PNG", "*.png")) # returns string of file path to be used in upload process
