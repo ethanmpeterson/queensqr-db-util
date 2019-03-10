@@ -2,6 +2,8 @@
 # return a dictionary that can be posted to the DB in the main.py file
 
 import file as FileClient
+import web as WebClient
+
 
 b = {}
 b['services'] = []
@@ -72,6 +74,11 @@ def newFloorPlan(buildingID):
             break
         newFloor()
     print(floorPaths)
+    ans = input("Upload the Files above? [y/n]")
+    if ans == "y":
+        WebClient.uploadFile(floorPaths)
+    
+
 
 def newService():
     print("SERVICE ENTRY")
