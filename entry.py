@@ -76,6 +76,7 @@ def newFloorPlan(buildingID):
     print(floorPaths)
     ans = input("Upload the Files above? [y/n]")
     if ans == "y":
+        print("uploading...")
         WebClient.uploadFile(floorPaths, buildingID)
     
 
